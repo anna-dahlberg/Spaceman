@@ -9,45 +9,70 @@ public class Game
     private int maxGuesses;
     private int numWrongGuesses;
     private string[] wordBank;
-    private Ufo ufo;
+    private Ufo Ufo { get; set; }
+    private List<string> WrongGuesses { get; set; }
+    
+    public Game()
+    {
+        wordBank = new string[] { "kebabkungen", "kebabrulle", "feferoni", "kebabsås", "extraallt" };
+        Random random = new Random();
+        codeword = wordBank[random.Next(wordBank.Length)];
+        maxGuesses = 5;
+        numWrongGuesses = 0;
+        currentWord = new string('_', codeword.Length);
+        Ufo = new Ufo();
+        WrongGuesses = new List<string>();
+    }
+    
+    public void Greet()
+    {
+        Console.WriteLine("Welcome to Spaceman!");
+        Console.WriteLine("Try to guess the word before the alien abducts you.");
+        Console.WriteLine("Good luck, earthling!\n");
+    }
     
     public void Ask()
     {
         Console.Write("Guess a letter: ");
-        string guess = Console.ReadLine();
+        string guess = Console.ReadLine()?.ToLower();
         
-        if (guess.Length != 1)
+        if (string.IsNullOrEmpty(guess) || guess.Length != 1)
         {
             Console.WriteLine("Please enter one letter at a time.");
             return;
         }
-        
+
         if (codeword.Contains(guess))
         {
             Console.WriteLine($"Good guess! {guess} is in the word.");
-            
-            for (int i = 0; i < codeword.Length; i++)
-            {
-                if (codeword[i].ToString() == guess)
-                {
-                    currentWord = currentWord.Remove(i, 1).Insert(i, guess);
-                }
-            }
+            UpdateCurrentWord(guess);
         }
         else
         {
             Console.WriteLine($"Sorry, {guess} is not in the word.");
+            WrongGuesses.Add(guess);  
             numWrongGuesses++;
-            ufo.AddPart(); 
+            Ufo.AddPart();  
         }
     }
-
-
+    
+    private void UpdateCurrentWord(string guess)
+    {
+        for (int i = 0; i < codeword.Length; i++)
+        {
+            if (codeword[i].ToString() == guess)
+            {
+                currentWord = currentWord.Remove(i, 1).Insert(i, guess);
+            }
+        }
+    }
+    
     public void Display()
     {
-        Console.WriteLine(ufo.Stringify());
+        Console.WriteLine(Ufo.Stringify());
         Console.WriteLine("Current word: " + currentWord);
         Console.WriteLine("Guesses remaining: " + (maxGuesses - numWrongGuesses));
+        Console.WriteLine("Wrong guesses: " + string.Join(", ", WrongGuesses));
     }
 
     public bool DidWin()
@@ -58,21 +83,5 @@ public class Game
     public bool DidLose()
     {
        return numWrongGuesses >= maxGuesses;
-    }
-
-    public Game()
-    {
-        wordBank = new string[] { "kebabkungen", "kebabrulle", "feferoni", "kebabsås", "extraallt" };
-        Random random = new Random();
-        codeword = wordBank[random.Next(wordBank.Length)];
-        maxGuesses = 5;
-        numWrongGuesses = 0;
-        currentWord = new string('_', codeword.Length);
-    }
-    public void Greet()
-    {
-        Console.WriteLine("Welcome to Spaceman!");
-        Console.WriteLine("Try to guess the word before the alien takes you.");
-        Console.WriteLine("Good luck, earthling!\n");
     }
 }
