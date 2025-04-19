@@ -50,12 +50,12 @@ public class Game
         Console.WriteLine("Guesses remaining: " + (maxGuesses - numWrongGuesses));
     }
 
-    public bool DidIWin()
+    public bool DidWin()
     {
         return currentWord.Equals(codeword);
     }
 
-    public bool DidILose()
+    public bool DidLose()
     {
        return numWrongGuesses >= maxGuesses;
     }
