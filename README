@@ -1,0 +1,4 @@
+ - The game is started with dotnet run.
+ - In the game, the user guesses one character at a time.
+ - The game ends once the word is complete or the use makes five wrong guesses.
+ - The game can be shut down early by pressing CTRL + C.
