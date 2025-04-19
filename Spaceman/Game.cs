@@ -2,6 +2,25 @@ namespace Spaceman;
 
 public class Game
 {
+    private string codeword;
+    private string currentWord;
+    private int maxGuesses;
+    private int numWrongGuesses;
+    private string[] wordBank;
+    private Ufo ufo;
+
+    public Game()
+    {
+        wordBank = new string[] { "kebabkungen", "kebabrulle", "feferoni", "kebabsås", "extraallt" };
+        Random random = new Random();
+        codeword = wordBank[random.Next(wordBank.Length)];
+        maxGuesses = 5;
+        numWrongGuesses = 0;
+        currentWord = new string('_', codeword.Length);
+    }
+    
+    
+    
     public void Greet()
     {
         Console.WriteLine("Welcome to Spaceman!");
