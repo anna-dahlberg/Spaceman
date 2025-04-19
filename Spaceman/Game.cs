@@ -9,6 +9,16 @@ public class Game
     private string[] wordBank;
     private Ufo ufo;
 
+    public bool DidIWin()
+    {
+        return currentWord.Equals(codeword);
+    }
+
+    public bool DidILose()
+    {
+       return numWrongGuesses >= maxGuesses;
+    }
+
     public Game()
     {
         wordBank = new string[] { "kebabkungen", "kebabrulle", "feferoni", "kebabsås", "extraallt" };
@@ -18,9 +28,6 @@ public class Game
         numWrongGuesses = 0;
         currentWord = new string('_', codeword.Length);
     }
-    
-    
-    
     public void Greet()
     {
         Console.WriteLine("Welcome to Spaceman!");
