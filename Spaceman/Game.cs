@@ -10,6 +10,38 @@ public class Game
     private int numWrongGuesses;
     private string[] wordBank;
     private Ufo ufo;
+    
+    public void Ask()
+    {
+        Console.Write("Guess a letter: ");
+        string guess = Console.ReadLine();
+        
+        if (guess.Length != 1)
+        {
+            Console.WriteLine("Please enter one letter at a time.");
+            return;
+        }
+        
+        if (codeword.Contains(guess))
+        {
+            Console.WriteLine($"Good guess! {guess} is in the word.");
+            
+            for (int i = 0; i < codeword.Length; i++)
+            {
+                if (codeword[i].ToString() == guess)
+                {
+                    currentWord = currentWord.Remove(i, 1).Insert(i, guess);
+                }
+            }
+        }
+        else
+        {
+            Console.WriteLine($"Sorry, {guess} is not in the word.");
+            numWrongGuesses++;
+            ufo.AddPart(); 
+        }
+    }
+
 
     public void Display()
     {
