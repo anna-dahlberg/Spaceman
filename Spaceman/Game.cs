@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace Spaceman;
 
 public class Game
@@ -8,6 +10,13 @@ public class Game
     private int numWrongGuesses;
     private string[] wordBank;
     private Ufo ufo;
+
+    public void Display()
+    {
+        Console.WriteLine(ufo.Stringify());
+        Console.WriteLine("Current word: " + currentWord);
+        Console.WriteLine("Guesses remaining: " + (maxGuesses - numWrongGuesses));
+    }
 
     public bool DidIWin()
     {
