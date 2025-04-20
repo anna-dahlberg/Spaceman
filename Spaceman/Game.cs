@@ -44,6 +44,12 @@ public class Game
             return;
         }
         
+        if (!char.IsLetter(guess[0]))
+        {
+            Console.WriteLine("Please enter a valid letter (a-z).");
+            return;
+        }
+        
         if (guessedLetters.Contains(guess))
         {
             Console.WriteLine($"You've already guessed '{guess}'. Try a different letter.");
