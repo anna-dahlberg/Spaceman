@@ -4,6 +4,8 @@
 
 A simple C# console game where you need to guess the word before the aliens abduct you.
 
+Made by following the instructions for [this project](https://www.codecademy.com/projects/practice/spaceman-challenge-project) from Codecadamy. 
+
 ## How to play:
 
 - Guess one letter at a time.
