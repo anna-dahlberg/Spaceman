@@ -1,10 +1,10 @@
-# Spaceman
+# Spaceman!
 
-[!](https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExNnp3YTZtZzF0Z3gzd3pwMXJjMnVndmk5dDRleDZoazd2bGdqczFmNCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oEdvdir0afC6brCCs/giphy.gif)
+![](https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExNnp3YTZtZzF0Z3gzd3pwMXJjMnVndmk5dDRleDZoazd2bGdqczFmNCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oEdvdir0afC6brCCs/giphy.gif)
 
 A simple C# console game where you need to guess the word before the aliens abduct you.
 
-## How to Play
+## How to play:
 
 - Guess one letter at a time.
 - Correct guesses reveal letters in the word.
