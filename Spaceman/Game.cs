@@ -11,6 +11,8 @@ public class Game
     private string[] wordBank;
     private Ufo Ufo { get; set; }
     private List<string> WrongGuesses { get; set; }
+    private HashSet<string> guessedLetters = new HashSet<string>();
+
     
     public Game()
     {
@@ -41,6 +43,13 @@ public class Game
             Console.WriteLine("Please enter one letter at a time.");
             return;
         }
+        
+        if (guessedLetters.Contains(guess))
+        {
+            Console.WriteLine($"You've already guessed '{guess}'. Try a different letter.");
+            return;
+        }
+        guessedLetters.Add(guess);
 
         if (codeword.Contains(guess))
         {
