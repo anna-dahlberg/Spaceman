@@ -7,7 +7,7 @@ public class Game
     private string codeword;
     private string currentWord;
     private int maxGuesses;
-    private int numWrongGuesses;
+    private int NumWrongGuesses;
     private string[] wordBank;
     private Ufo Ufo { get; set; }
     private List<string> WrongGuesses { get; set; }
@@ -20,7 +20,7 @@ public class Game
         Random random = new Random();
         codeword = wordBank[random.Next(wordBank.Length)];
         maxGuesses = 5;
-        numWrongGuesses = 0;
+        NumWrongGuesses = 0;
         currentWord = new string('_', codeword.Length);
         Ufo = new Ufo();
         WrongGuesses = new List<string>();
@@ -66,7 +66,7 @@ public class Game
         {
             Console.WriteLine($"Sorry, {guess} is not in the word.");
             WrongGuesses.Add(guess);  
-            numWrongGuesses++;
+            NumWrongGuesses++;
             Ufo.AddPart();  
         }
     }
@@ -86,7 +86,7 @@ public class Game
     {
         Console.WriteLine(Ufo.Stringify());
         Console.WriteLine("Current word: " + currentWord);
-        Console.WriteLine("Guesses remaining: " + (maxGuesses - numWrongGuesses));
+        Console.WriteLine("Guesses remaining: " + (maxGuesses - NumWrongGuesses));
         Console.WriteLine("Wrong guesses: " + string.Join(", ", WrongGuesses));
     }
 
@@ -97,6 +97,6 @@ public class Game
 
     public bool DidLose()
     {
-       return numWrongGuesses >= maxGuesses;
+       return NumWrongGuesses >= maxGuesses;
     }
 }
